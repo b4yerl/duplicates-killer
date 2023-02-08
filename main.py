@@ -19,6 +19,12 @@ def find_duplicates(path):
     for file in files:
       file_path = os.path.join(root, file)
       file_hash = hash_file(file_path)
-      print(file_hash)
+      hasKey = hash_table.get(file_hash)
+      if hasKey:
+        print('\n--DUPLICATE FOUND--')
+        print(file_path)
+      else:
+        hash_table.update({file_hash: file_path})
+  print(hash_table)
 
 find_duplicates(sys.argv[1])
